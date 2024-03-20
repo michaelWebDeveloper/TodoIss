@@ -12,7 +12,7 @@
     <!-- Headline -->
     <h1 class="headline">
       todo
-      <span class="headline-accent">iss</span>
+      <span class="headline-accent">iss.</span>
     </h1>
 
     <!-- Wrapper -->
@@ -40,9 +40,8 @@
 }
 
 .headline{
-  font-size: 40px;
+  font-size: 50px;
   margin-bottom: 30px;
-  font-weight: bold;
 }
 
 .headline-accent{
@@ -71,5 +70,6 @@
 .todo-title{
   color: #9b9eea;
   font-size: 26px;
+  text-transform: capitalize;
 }
 </style>
