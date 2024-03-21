@@ -9,8 +9,9 @@
   --text-color: #dfdffd;
   --accent-color: #825ef6;
   --accent-gradient: linear-gradient(90deg, rgb(135, 103, 244) 0%, rgb(108, 67, 245) 100%);
-  --accent-gradient-button: linear-gradient(130deg, rgb(112, 76, 245) 0%, rgb(40, 5, 166) 100%);
-
+  --accent-gradient-button: linear-gradient(130deg, rgb(112, 76, 245) 0%, rgb(62, 26, 190) 100%);
+  --gray-gradient-button: linear-gradient(130deg, rgb(110, 105, 105) 0%, rgb(58, 49, 49) 100%);
+  --danger-gradient-button: linear-gradient(130deg, rgb(241, 99, 87) 0%, rgb(168, 46, 43) 100%);
 }
 
 

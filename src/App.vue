@@ -3,6 +3,7 @@ import {ref} from "vue";
 import todos from "@/todos";
 import TodoList from '@/components/TodoList.vue';
 import TodoFilters from '@/components/TodoFilters.vue';
+import TodoControls from '@/components/TodoControls.vue';
 
 const todoItems = ref(todos)
 </script>
@@ -28,6 +29,7 @@ const todoItems = ref(todos)
       <main class="card todo-todo_list">
         <h2 class="todo-title">Задачи</h2>
         <TodoList :todo-list="todoItems"></TodoList>
+        <TodoControls />
       </main>
     </div>
   </div>

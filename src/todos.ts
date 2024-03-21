@@ -35,45 +35,4 @@ export default [
         description: 'Добавить геттеры в стор задач.',
         isDone: false
     },
-
-
-
-
-
-    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },    {
-        id: 4,
-        name: 'Реализовать фильтры',
-        description: 'Добавить геттеры в стор задач.',
-        isDone: false
-    },
 ]

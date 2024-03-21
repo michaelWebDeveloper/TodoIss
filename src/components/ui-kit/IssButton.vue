@@ -1,5 +1,5 @@
 <template>
-  <div class="button" @click="$emit('click')">
+  <div class="button" :class="{[variant]: true}" @click="$emit('click')">
     {{text}}
   </div>
 </template>
@@ -11,6 +11,10 @@ defineProps({
   text: {
     type: String,
     default: '',
+  },
+  variant: {
+    type: String,
+    default: 'primary'
   }
 })
 
@@ -19,7 +23,6 @@ defineEmits(['click'])
 
 <style scoped>
 .button{
-  background-image: var(--accent-gradient-button);
   display: inline-block;
   padding: 7px 34px;
   border-radius: 20px;
@@ -28,8 +31,26 @@ defineEmits(['click'])
   transition: all .2s;
   text-transform: capitalize;
   font-size: 16px;
+  user-select: none;
 }
-.button:hover {
+.primary{
+  background-image: var(--accent-gradient-button);
+}
+.primary:hover {
   box-shadow: 0 0 3px 3px rgba(82, 46, 201, 0.25);
+}
+
+.danger{
+  background-image: var(--danger-gradient-button);
+}
+.danger:hover {
+  box-shadow: 0 0 3px 3px rgba(139, 46, 201, 0.25);
+}
+
+.gray{
+  background-image: var(--gray-gradient-button);
+}
+.gray:hover {
+  box-shadow: 0 0 3px 3px rgba(29, 27, 30, 0.25);
 }
 </style>

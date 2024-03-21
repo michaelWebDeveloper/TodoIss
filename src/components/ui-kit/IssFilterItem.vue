@@ -33,6 +33,7 @@ defineEmits(['changeState'])
   align-items: center;
   color: var(--icon-color);
   cursor: pointer;
+  user-select: none;
 }
 .filter-item:hover{
   background-color: var(--background-interactable-hover);
