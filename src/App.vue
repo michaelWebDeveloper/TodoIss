@@ -1,49 +1,17 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import IssTaskItem from '@/components/ui-kit/IssTaskItem.vue';
+import todos from "@/todos";
+
 import IssFilterItem from '@/components/ui-kit/IssFilterItem.vue';
 import IconInbox from '@/components/icons/IconInbox.vue';
 import IconDone from '@/components/icons/IconDone.vue';
 import IconNotDone from '@/components/icons/IconNotDone.vue';
 
-const todoItems = ref([
-    {
-      id: 1,
-      name: 'Компонент для списка дел',
-      description: 'Нужно учитывать скролл в случае если дел будет больше чем экран',
-      isDone: false
-    },
-    {
-      id: 2,
-      name: 'Компоненты ui-kit связанные с вводом данных (input, textarea, checkbox)',
-      description: 'Нужно учитывать вылидацию данных (не позволять пустые либо слишком объёмные данные)',
-      isDone: false
-    },
-    {
-      id: 3,
-      name: 'Компонент модального окна',
-      description: '',
-      isDone: false
-    },
-    {
-      id: 4,
-      name: 'Продумать систему хранения данных списка дел',
-      description: 'Нужно продумать каким образом обеспечивать сихранизацию данных между pinia и localstorage',
-      isDone: false
-    },
-    {
-      id: 4,
-      name: 'Реализовать функциональную часть интерфейса управления списком дел',
-      description: 'Добавление задачи, Редактирование задачи, Выбор задач для удаления, Удаление списка задач',
-      isDone: false
-    },
-    {
-      id: 4,
-      name: 'Реализовать фильтры',
-      description: 'Добавить геттеры в стор задач.',
-      isDone: false
-    },
-])
+import TodoList from '@/components/TodoList.vue';
+
+console.log(todos)
+
+const todoItems = ref(todos)
 </script>
 
 <template>
@@ -78,12 +46,7 @@ const todoItems = ref([
       <!-- TodoList -->
       <main class="card todo-todo_list">
         <h2 class="todo-title">Задачи</h2>
-        <IssTaskItem
-            v-for="todo in todoItems"
-            :key="todo.id"
-            @changeState="todo.isDone = !todo.isDone"
-            :todo-item="todo"
-        />
+        <TodoList :todo-list="todoItems"></TodoList>
       </main>
     </div>
   </div>
