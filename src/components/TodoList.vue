@@ -24,7 +24,7 @@ defineProps({
 
 <style scoped>
 .todo-list_wrapper{
-  height: 80%;
+  height: 75%;
   overflow-y: scroll;
   scrollbar-color: #673ee1 #2d3038;
   scrollbar-width: thin;

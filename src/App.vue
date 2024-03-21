@@ -1,15 +1,8 @@
 <script setup lang="ts">
 import {ref} from "vue";
 import todos from "@/todos";
-
-import IssFilterItem from '@/components/ui-kit/IssFilterItem.vue';
-import IconInbox from '@/components/icons/IconInbox.vue';
-import IconDone from '@/components/icons/IconDone.vue';
-import IconNotDone from '@/components/icons/IconNotDone.vue';
-
 import TodoList from '@/components/TodoList.vue';
-
-console.log(todos)
+import TodoFilters from '@/components/TodoFilters.vue';
 
 const todoItems = ref(todos)
 </script>
@@ -28,19 +21,7 @@ const todoItems = ref(todos)
       <!-- Filters -->
       <aside class="card todo-filters">
         <h2 class="todo-title">Фильтры</h2>
-
-        <IssFilterItem text="Все" :is-active="true">
-          <icon-inbox/>
-        </IssFilterItem>
-
-        <IssFilterItem text="Не выполненные" :is-active="false">
-          <icon-done/>
-        </IssFilterItem>
-
-        <IssFilterItem text="Выполненные" :is-active="false">
-          <icon-not-done/>
-        </IssFilterItem>
-
+        <TodoFilters />
       </aside>
 
       <!-- TodoList -->
