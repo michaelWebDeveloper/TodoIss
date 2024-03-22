@@ -10,13 +10,7 @@ import EditTodoModal from '@/components/EditTodoModal.vue';
 import useDeleteMod from "@/composition/useDeleteMod";
 import useTodoStore from "@/stores/useTodoStore";
 
-const {
-  todoList,
-  addTodo,
-  updateTodo,
-  deleteTodos,
-  toggleIsDone
-} = useTodoStore()
+const todoStore = useTodoStore()
 
 const {
   deleteMod,
@@ -26,7 +20,7 @@ const {
 } = useDeleteMod()
 
 const deleteSelectedTodos = () => {
-  deleteTodos(deleteList.value)
+  todoStore.deleteTodos(deleteList.value)
   cancelDeleteMod()
 }
 
@@ -46,10 +40,10 @@ const setEditId = (id) => {
   editModal.value = true
 }
 const getEditItem = () => {
-  return todoList.find(todo => todo.id === editTodoId.value)
+  return todoStore.getTodoList().find(todo => todo.id === editTodoId.value)
 }
 const editTodo = (todoData: TodoData) => {
-  updateTodo(editTodoId.value, todoData)
+  todoStore.updateTodo(editTodoId.value, todoData)
 }
 const closeEditModal = () => {
   editModal.value = false;
@@ -79,17 +73,17 @@ const closeEditModal = () => {
       <main class="card todo-todo_list">
         <h2 class="todo-title">Задачи</h2>
         <TodoList
-            :todo-list="todoList"
+            :todo-list="todoStore.getTodoList()"
             :delete-mode="deleteMod"
             :delete-list="deleteList"
             @check-delete-item="toggleDeleteItem"
-            @toggle-is-done="toggleIsDone"
+            @toggle-is-done="todoStore.toggleIsDone"
             @edit-todo="setEditId"
         />
         <TodoControls
             :delete-mode="deleteMod"
             :has-selected="!!deleteList.length"
-            :has-todos="!!todoList.length"
+            :has-todos="!!todoStore.todoList.length"
             @set-delete-mod="deleteMod=true"
             @delete-selected="deleteSelectedTodos"
             @cancel-delete-mod="cancelDeleteMod"
@@ -101,7 +95,7 @@ const closeEditModal = () => {
   <AddTodoModal
     :is-open="addModal"
     @close-modal="addModal=false"
-    @add-todo="addTodo"
+    @add-todo="todoStore.addTodo"
   />
 
   <EditTodoModal

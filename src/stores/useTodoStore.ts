@@ -1,11 +1,41 @@
 import { ref } from "vue";
 import { defineStore } from 'pinia'
 import type { TodoList, TodoData } from '@/types/todoTypes'
+import {filterStates} from "@/consts/filter";
 
 export default defineStore('todoStore', () => {
 
-    const todoList = ref<TodoList>([])
-    const lastTodoId = ref<number>(1)
+    const todoList = ref<TodoList>([]);
+    const lastTodoId = ref<number>(1);
+    const filterState = ref<number>(1);
+
+    /**
+     * Получить список
+     */
+    const getTodoList = () => {
+        if(filterState.value === filterStates['ALL']){
+            return todoList.value;
+        }
+
+        if(filterState.value === filterStates['IN_PROGRESS']) {
+            return todoList.value.filter((todo) => {
+                return !todo.isDone
+            })
+        }
+
+        if(filterState.value === filterStates['DONE']) {
+            return todoList.value.filter((todo) => {
+                return todo.isDone
+            })
+        }
+    }
+
+    /**
+     * Установить состояние фильтров
+     */
+    const setFilterState = (state) => {
+        filterState.value = state;
+    }
 
     /**
      * Инициализация и загрузка списка задач из localStorage
@@ -24,8 +54,9 @@ export default defineStore('todoStore', () => {
      * Добавление задачи
      */
     const addTodo = (todoData:TodoData):void => {
+        lastTodoId.value = lastTodoId.value + 1
         todoList.value.push({
-            id: lastTodoId.value++,
+            id: lastTodoId.value,
             ...todoData,
             isDone: false,
         })
@@ -72,6 +103,9 @@ export default defineStore('todoStore', () => {
 
     return {
         todoList,
+        filterState,
+        getTodoList,
+        setFilterState,
         initTodos,
         addTodo,
         updateTodo,
