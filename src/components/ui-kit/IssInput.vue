@@ -29,6 +29,7 @@ defineEmits(['update:modelValue'])
     <input
         class="iss-input_input"
         type="text"
+        maxlength="70"
         :id="id"
         :value="modelValue"
         @input="$emit('update:modelValue', $event.target.value)"

@@ -23,10 +23,10 @@ defineEmits(['closeModal', 'makeAction'])
 
 <template>
   <template v-if="isOpen">
-    <div class="add-modal_overlay"></div>
-    <div class="add-modal_container container">
-      <div class="add-modal_wrapper card">
-        <div class="add-modal_close">
+    <div class="modal_overlay"></div>
+    <div class="modal_container container">
+      <div class="modal_wrapper card">
+        <div class="modal_close">
           <IconClose @click="$emit('closeModal')" :size="30" />
         </div>
         <h2 class="todo-title">{{title}}</h2>
@@ -43,7 +43,7 @@ defineEmits(['closeModal', 'makeAction'])
 </template>
 
 <style>
-.add-modal_overlay{
+.modal_overlay{
   position: absolute;
   left: 0;
   right: 0;
@@ -51,31 +51,36 @@ defineEmits(['closeModal', 'makeAction'])
   bottom: 0;
   background: var(--background-overlay)
 }
-.add-modal_container{
+.modal_container{
   position: absolute;
+  top: 70px;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 700px;
 }
-.add-modal_wrapper{
+.modal_wrapper{
   position: relative;
   width: 400px;
   height: 540px;
 }
-.add-modal_close{
+.modal_close{
   position: absolute;
   top: 33px;
   right: 20px;
   color: var(--icon-color);
   cursor: pointer;
 }
-
 .todo-form_actions{
   position: absolute;
   bottom: 30px;
   width: calc(100% - 60px);
   display: flex;
   justify-content: flex-end;
+}
+@media (max-width: 820px) {
+  .modal_container{
+    top: 30px;
+  }
 }
 </style>

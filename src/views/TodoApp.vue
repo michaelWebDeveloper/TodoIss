@@ -139,4 +139,20 @@ const closeEditModal = () => {
   width: 67%;
   height: 100%;
 }
+
+@media (max-width: 820px) {
+  .todo{
+    flex-direction: column;
+    height: auto;
+  }
+  .todo-filters{
+    width: 100%;
+  }
+  .todo-todo_list{
+    width: 100%;
+    margin-left: 0;
+    margin-top: 20px;
+    height: 300px;
+  }
+}
 </style>
