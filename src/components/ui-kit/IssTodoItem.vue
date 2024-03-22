@@ -20,14 +20,14 @@ defineProps({
   }
 })
 
-defineEmits(['changeState', 'editItem', 'checkDeleteItem' ])
+defineEmits(['toggleIsDone', 'editItem', 'checkDeleteItem' ])
 </script>
 
 <template>
   <div class="todo-wrapper">
     <div class="todo-item" :class="{['is-done']: todoItem.isDone}">
       <div class="todo-item_info">
-        <div @click="$emit('changeState')" class="todo-item_state" :class="{['is-done']: todoItem.isDone}"></div>
+        <div @click="$emit('toggleIsDone')" class="todo-item_state" :class="{['is-done']: todoItem.isDone}"></div>
         <div class="todo-item_text">{{todoItem.name}}</div>
       </div>
       <div class="todo-item_interface">

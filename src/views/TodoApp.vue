@@ -8,7 +8,7 @@ import AddTodoModal from '@/components/ui-kit/AddTodoModal.vue';
 import useDeleteMod from "@/composition/useDeleteMod";
 import useTodoStore from "@/stores/useTodoStore";
 
-const { todoList, addTodo, deleteTodos } = useTodoStore()
+const { todoList, addTodo, deleteTodos, toggleIsDone } = useTodoStore()
 
 const {
   deleteMod,
@@ -58,6 +58,7 @@ const closeModal = () => {
             :delete-mode="deleteMod"
             :delete-list="deleteList"
             @check-delete-item="toggleDeleteItem"
+            @toggle-is-done="toggleIsDone"
         />
         <TodoControls
             :delete-mode="deleteMod"

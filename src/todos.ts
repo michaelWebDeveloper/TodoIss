@@ -21,7 +21,7 @@ export default [
         id: 4,
         name: 'Продумать систему хранения данных списка дел',
         description: 'Нужно продумать каким образом обеспечивать сихранизацию данных между pinia и localstorage',
-        isDone: false
+        isDone: true
     },
     {
         id: 5,
