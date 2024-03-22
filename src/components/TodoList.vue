@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { defineProps, PropType } from 'vue';
+import { defineEmits, defineProps, PropType } from 'vue';
 import {TodoList} from "@/types/todoTypes.ts";
 import IssTaskItem from '@/components/ui-kit/IssTaskItem.vue';
 
@@ -7,8 +7,18 @@ defineProps({
   todoList: {
     type: Array as PropType<TodoList>,
     default: () => []
-  }
+  },
+  deleteList: {
+    type: Array as PropType<number[]>,
+    default: () => []
+  },
+  deleteMode: {
+    type: Boolean,
+    default: false
+  },
 })
+
+defineEmits(['checkDeleteItem'])
 </script>
 
 <template>
@@ -16,8 +26,11 @@ defineProps({
     <IssTaskItem
         v-for="todo in todoList"
         :key="todo.id"
-        @changeState="todo.isDone = !todo.isDone"
         :todo-item="todo"
+        :delete-mode="deleteMode"
+        :delete-checked="deleteList.indexOf(todo.id) !== -1"
+        @change-state="todo.isDone = !todo.isDone"
+        @check-delete-item="$emit('checkDeleteItem', todo.id)"
     />
   </div>
 </template>

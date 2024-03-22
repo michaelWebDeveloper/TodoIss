@@ -1,34 +1,43 @@
 <script setup>
-import { defineEmits } from "vue";
+import { defineProps, defineEmits } from "vue";
 
 import IconClose from '@/components/icons/IconClose.vue';
 import IssButton from '@/components/ui-kit/IssButton.vue'
 import IssInput from '@/components/ui-kit/IssInput.vue'
 import IssTextarea from '@/components/ui-kit/IssTextarea.vue'
 
+defineProps({
+  isOpen: {
+    type: Boolean,
+    default: false
+  }
+})
+
 defineEmits(['closeModal'])
 </script>
 
 <template>
-  <div class="add-modal_overlay"></div>
-  <div class="add-modal_container container">
-    <div class="add-modal_wrapper card">
-      <div class="add-modal_close">
-        <IconClose @click="$emit('closeModal')" size="30" />
-      </div>
-      <h2 class="todo-title">Добавить задачу</h2>
-
-      <form class="todo-form" @submit.prevent>
-        <IssInput id="todo-name" label="Название задачи" />
-        <IssTextarea id="todo-description" label="Описание задачи" />
-
-        <div class="todo-form_actions">
-          <IssButton @click="$emit('closeModal')" class="ml_10" variant="gray" text="Закрыть" />
-          <IssButton @click="$emit('addTodo')" class="ml_10" text="Добавить" />
+  <template v-if="isOpen">
+    <div class="add-modal_overlay"></div>
+    <div class="add-modal_container container">
+      <div class="add-modal_wrapper card">
+        <div class="add-modal_close">
+          <IconClose @click="$emit('closeModal')" :size="30" />
         </div>
-      </form>
+        <h2 class="todo-title">Добавить задачу</h2>
+
+        <form class="todo-form" @submit.prevent>
+          <IssInput id="todo-name" label="Название задачи" />
+          <IssTextarea id="todo-description" label="Описание задачи" />
+
+          <div class="todo-form_actions">
+            <IssButton @click="$emit('closeModal')" class="ml_10" variant="gray" text="Закрыть" />
+            <IssButton @click="$emit('addTodo')" class="ml_10" text="Добавить" />
+          </div>
+        </form>
+      </div>
     </div>
-  </div>
+  </template>
 </template>
 
 <style>

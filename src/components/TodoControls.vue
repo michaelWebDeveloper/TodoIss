@@ -3,9 +3,9 @@ import { defineProps, defineEmits } from "vue";
 import IssButton from '@/components/ui-kit/IssButton.vue';
 
 defineProps({
-  isDeleteMod: {
+  deleteMode: {
     type: Boolean,
-    default: false,
+    default: false
   },
   hasSelected: {
     type: Boolean,
@@ -24,7 +24,7 @@ defineEmits([
 
 <template>
   <div class="todo-controls">
-    <template v-if="!isDeleteMod">
+    <template v-if="!deleteMode">
       <IssButton
           @click="$emit('setDeleteMod')"
           class="ml_10"
@@ -48,7 +48,7 @@ defineEmits([
           @click="$emit('deleteSelected')"
           class="ml_10"
           variant="danger"
-          v-if="!hasSelected"
+          v-if="hasSelected"
           text="Удалить выбранные"
       />
     </template>

@@ -3,7 +3,7 @@ import { defineProps } from 'vue';
 
 defineProps({
   id: {
-    type: Number,
+    type: String,
     required: true
   },
   label: {

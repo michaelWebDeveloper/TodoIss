@@ -3,11 +3,30 @@ import {ref} from "vue";
 import TodoList from '@/components/TodoList.vue';
 import TodoFilters from '@/components/TodoFilters.vue';
 import TodoControls from '@/components/TodoControls.vue';
-
-/* temporary */
 import AddTodoModal from '@/components/ui-kit/AddTodoModal.vue';
+
+import useDeleteMod from "@/composition/useDeleteMod";
+
+/* временный код */
 import todos from "@/todos";
 const todoItems = ref(todos)
+/* временный код */
+
+const {
+  deleteMod,
+  deleteList,
+  toggleDeleteItem,
+  cancelDeleteMod
+} = useDeleteMod()
+
+/**
+ * Модальное окно добавления задачи
+ */
+const addModal = ref(false);
+const closeModal = () => {
+  addModal.value = false;
+}
+
 </script>
 
 <template>
@@ -30,12 +49,26 @@ const todoItems = ref(todos)
       <!-- TodoList -->
       <main class="card todo-todo_list">
         <h2 class="todo-title">Задачи</h2>
-        <TodoList :todo-list="todoItems"></TodoList>
-        <TodoControls />
+        <TodoList
+            :todo-list="todoItems"
+            :delete-mode="deleteMod"
+            :delete-list="deleteList"
+            @check-delete-item="toggleDeleteItem"
+        />
+        <TodoControls
+            :delete-mode="deleteMod"
+            :has-selected="!!deleteList.length"
+            @set-delete-mod="deleteMod=true"
+            @cancel-delete-mod="cancelDeleteMod"
+            @add-todo="addModal=true"
+        />
       </main>
     </div>
   </div>
-  <AddTodoModal />
+  <AddTodoModal
+      :is-open="addModal"
+      @close-modal="closeModal"
+  />
 </template>
 
 <style scoped>

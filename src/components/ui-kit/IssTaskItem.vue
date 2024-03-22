@@ -37,8 +37,8 @@ defineEmits(['changeState', 'editItem', 'checkDeleteItem' ])
 
 
     <div @click="$emit('checkDeleteItem')" v-if="deleteMode" class="todo-item_delete">
-      <IconDeleteChecked size="26" v-if="deleteChecked" />
-      <IconDeleteUnchecked size="26" v-else />
+      <IconDeleteChecked :size="26" v-if="deleteChecked" />
+      <IconDeleteUnchecked :size="26" v-else />
     </div>
   </div>
 
