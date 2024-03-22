@@ -12,7 +12,7 @@ export default defineStore('todoStore', () => {
      */
     const initTodos = ():void => {
         const lsTodos = JSON.parse(localStorage.getItem('todoList'));
-        let biggestTodoId = 0;
+        let biggestTodoId = 1;
         lsTodos.forEach(todo => {
             if(todo.id > biggestTodoId) biggestTodoId = todo.id;
             todoList.value.push(todo)
@@ -36,7 +36,10 @@ export default defineStore('todoStore', () => {
      * Изменение задачи
      */
     const updateTodo = (todoId:number, todoData:TodoData) => {
-        console.log(todoData)
+        const todo = todoList.value.find(todo => todo.id === todoId)
+        todo.name = todoData.name;
+        todo.description = todoData.description
+        _syncLocalStorage()
     }
 
     /**

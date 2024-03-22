@@ -1,14 +1,22 @@
 <script setup lang="ts">
 import {ref} from "vue";
+import {TodoData} from "@/types/todoTypes";
 import TodoList from '@/components/TodoList.vue';
 import TodoFilters from '@/components/TodoFilters.vue';
 import TodoControls from '@/components/TodoControls.vue';
-import AddTodoModal from '@/components/ui-kit/AddTodoModal.vue';
+import AddTodoModal from '@/components/AddTodoModal.vue';
 
+import EditTodoModal from '@/components/EditTodoModal.vue';
 import useDeleteMod from "@/composition/useDeleteMod";
 import useTodoStore from "@/stores/useTodoStore";
 
-const { todoList, addTodo, deleteTodos, toggleIsDone } = useTodoStore()
+const {
+  todoList,
+  addTodo,
+  updateTodo,
+  deleteTodos,
+  toggleIsDone
+} = useTodoStore()
 
 const {
   deleteMod,
@@ -27,8 +35,25 @@ const deleteSelectedTodos = () => {
  * Модальное окно добавления задачи
  */
 const addModal = ref(false);
-const closeModal = () => {
-  addModal.value = false;
+
+/**
+ * Модальное окно редактирвоания задачи
+ */
+const editModal = ref(false);
+const editTodoId = ref<number>(0)
+const setEditId = (id) => {
+  editTodoId.value = id;
+  editModal.value = true
+}
+const getEditItem = () => {
+  return todoList.find(todo => todo.id === editTodoId.value)
+}
+const editTodo = (todoData: TodoData) => {
+  updateTodo(editTodoId.value, todoData)
+}
+const closeEditModal = () => {
+  editModal.value = false;
+  editTodoId.value = 0;
 }
 
 </script>
@@ -59,6 +84,7 @@ const closeModal = () => {
             :delete-list="deleteList"
             @check-delete-item="toggleDeleteItem"
             @toggle-is-done="toggleIsDone"
+            @edit-todo="setEditId"
         />
         <TodoControls
             :delete-mode="deleteMod"
@@ -73,9 +99,17 @@ const closeModal = () => {
     </div>
   </div>
   <AddTodoModal
-      :is-open="addModal"
-      @close-modal="closeModal"
-      @add-todo="addTodo"
+    :is-open="addModal"
+    @close-modal="addModal=false"
+    @add-todo="addTodo"
+  />
+
+  <EditTodoModal
+      v-if="getEditItem()"
+      :todo="getEditItem()"
+      :is-open="editModal"
+      @close-modal="closeEditModal"
+      @edit-todo="editTodo"
   />
 </template>
 

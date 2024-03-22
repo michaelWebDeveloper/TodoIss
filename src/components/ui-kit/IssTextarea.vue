@@ -41,7 +41,10 @@ defineEmits(['update:modelValue'])
 .iss-textarea{
   margin-top: 10px;
 }
-
+.iss-textarea_label{
+  font-size: 11px;
+  color: var(--icon-color);
+}
 .iss-textarea_textarea{
   width: 100%;
   background-color: var(--background-interactable);

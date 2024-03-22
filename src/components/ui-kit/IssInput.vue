@@ -41,6 +41,10 @@ defineEmits(['update:modelValue'])
 .iss-input{
   margin-top: 10px;
 }
+.iss-input_label{
+  font-size: 11px;
+  color: var(--icon-color);
+}
 .iss-input_input{
   width: 100%;
   background-color: var(--background-interactable);

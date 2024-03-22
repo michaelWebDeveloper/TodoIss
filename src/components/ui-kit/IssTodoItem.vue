@@ -20,7 +20,7 @@ defineProps({
   }
 })
 
-defineEmits(['toggleIsDone', 'editItem', 'checkDeleteItem' ])
+defineEmits(['toggleIsDone', 'editTodo', 'checkDeleteItem' ])
 </script>
 
 <template>
@@ -31,7 +31,7 @@ defineEmits(['toggleIsDone', 'editItem', 'checkDeleteItem' ])
         <div class="todo-item_text">{{todoItem.name}}</div>
       </div>
       <div class="todo-item_interface">
-        <IconEdit @click="$emit('editItem')" class="todo-item_edit" />
+        <IconEdit @click="$emit('editTodo')" class="todo-item_edit" />
       </div>
     </div>
 

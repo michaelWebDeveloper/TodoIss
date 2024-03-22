@@ -18,7 +18,7 @@ defineProps({
   },
 })
 
-defineEmits(['checkDeleteItem', 'toggleIsDone'])
+defineEmits(['checkDeleteItem', 'toggleIsDone', 'editTodo'])
 </script>
 
 <template>
@@ -30,6 +30,7 @@ defineEmits(['checkDeleteItem', 'toggleIsDone'])
         :delete-mode="deleteMode"
         :delete-checked="deleteList.indexOf(todo.id) !== -1"
         @toggle-is-done="$emit('toggleIsDone', todo.id)"
+        @edit-todo="$emit('editTodo', todo.id)"
         @check-delete-item="$emit('checkDeleteItem', todo.id)"
     />
   </div>
