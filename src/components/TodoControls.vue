@@ -27,26 +27,26 @@ defineEmits([
     <template v-if="!isDeleteMod">
       <IssButton
           @click="$emit('setDeleteMod')"
-          class="btn"
+          class="ml_10"
           variant="danger"
           text="Удалить задачи"
       />
       <IssButton
           @click="$emit('addTodo')"
-          class="btn"
+          class="ml_10"
           text="Добавить задачу"
       />
     </template>
     <template v-else>
       <IssButton
           @click="$emit('cancelDeleteMod')"
-          class="btn"
+          class="ml_10"
           variant="gray"
           text="Отмена"
       />
       <IssButton
           @click="$emit('deleteSelected')"
-          class="btn"
+          class="ml_10"
           variant="danger"
           v-if="!hasSelected"
           text="Удалить выбранные"
@@ -60,8 +60,5 @@ defineEmits([
   display: flex;
   justify-content: flex-end;
   margin-top: 20px;
-}
-.btn{
-  margin-left: 10px;
 }
 </style>

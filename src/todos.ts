@@ -9,13 +9,13 @@ export default [
         id: 2,
         name: 'Компоненты ui-kit связанные с вводом данных (input, textarea, checkbox)',
         description: 'Нужно учитывать вылидацию данных (не позволять пустые либо слишком объёмные данные)',
-        isDone: false
+        isDone: true
     },
     {
         id: 3,
         name: 'Компонент модального окна',
         description: '',
-        isDone: false
+        isDone: true
     },
     {
         id: 4,

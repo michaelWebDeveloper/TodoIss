@@ -1,12 +1,13 @@
 :root {
   --background: #121216;
+  --background-overlay: rgba(18, 18, 22, 0.85);
   --background-soft: #18181d;
   --background-interactable: rgb(47, 45, 55);
   --background-interactable-hover: rgba(47, 45, 55, 0.7);
 
   --heading-color: #9b9eea;
   --icon-color: #83839d;
-  --text-color: #dfdffd;
+  --text-color: #c2c2d9;
   --accent-color: #825ef6;
   --accent-gradient: linear-gradient(90deg, rgb(135, 103, 244) 0%, rgb(108, 67, 245) 100%);
   --accent-gradient-button: linear-gradient(130deg, rgb(112, 76, 245) 0%, rgb(62, 26, 190) 100%);
@@ -27,9 +28,6 @@ body {
   min-height: 100vh;
   background: var(--background);
   color: var(--text-color);
-  transition:
-    color 0.5s,
-    background-color 0.5s;
   line-height: 1.6;
   font-family:
     Inter,

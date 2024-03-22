@@ -1,10 +1,12 @@
 <script setup lang="ts">
 import {ref} from "vue";
-import todos from "@/todos";
 import TodoList from '@/components/TodoList.vue';
 import TodoFilters from '@/components/TodoFilters.vue';
 import TodoControls from '@/components/TodoControls.vue';
 
+/* temporary */
+import AddTodoModal from '@/components/ui-kit/AddTodoModal.vue';
+import todos from "@/todos";
 const todoItems = ref(todos)
 </script>
 
@@ -33,16 +35,11 @@ const todoItems = ref(todos)
       </main>
     </div>
   </div>
+  <AddTodoModal />
 </template>
 
 <style scoped>
-.card{
-  background: var(--background-soft);
-  box-shadow: 0 0 12px 12px #00000014;
-  border-radius: 25px;
-  height: 100%;
-  padding: 30px;
-}
+
 
 .headline{
   font-size: 50px;
@@ -65,16 +62,12 @@ const todoItems = ref(todos)
 
 .todo-filters{
   width: 30%;
+  height: 100%;
 
 }
 .todo-todo_list{
   margin-left: 3%;
-  width: 67%
-}
-
-.todo-title{
-  color: #9b9eea;
-  font-size: 26px;
-  text-transform: capitalize;
+  width: 67%;
+  height: 100%;
 }
 </style>

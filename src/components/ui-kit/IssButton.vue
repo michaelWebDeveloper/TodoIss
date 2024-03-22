@@ -51,6 +51,6 @@ defineEmits(['click'])
   background-image: var(--gray-gradient-button);
 }
 .gray:hover {
-  box-shadow: 0 0 3px 3px rgba(29, 27, 30, 0.25);
+  box-shadow: 0 0 3px 3px rgba(60, 58, 61, 0.25);
 }
 </style>
