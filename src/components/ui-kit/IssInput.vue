@@ -10,9 +10,9 @@ defineProps({
     type: String,
     default: ''
   },
-  modalValue: {
+  modelValue: {
     type: String,
-    required: true
+    default: ''
   },
   errorMessage: {
     type: String,
@@ -20,7 +20,7 @@ defineProps({
   }
 })
 
-defineEmits(['update:modalValue'])
+defineEmits(['update:modelValue'])
 </script>
 
 <template>
@@ -30,8 +30,8 @@ defineEmits(['update:modalValue'])
         class="iss-input_input"
         type="text"
         :id="id"
-        :value="modalValue"
-        @input="$emit('update:modalValue')"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
     >
     <p v-if="errorMessage.length" class="iss-input_error">{{errorMessage}}</p>
   </div>

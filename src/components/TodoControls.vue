@@ -7,6 +7,10 @@ defineProps({
     type: Boolean,
     default: false
   },
+  hasTodos:  {
+    type: Boolean,
+    default: false
+  },
   hasSelected: {
     type: Boolean,
     default: false
@@ -26,6 +30,7 @@ defineEmits([
   <div class="todo-controls">
     <template v-if="!deleteMode">
       <IssButton
+          v-if="hasTodos"
           @click="$emit('setDeleteMod')"
           class="ml_10"
           variant="danger"

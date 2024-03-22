@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { defineEmits, defineProps, PropType } from 'vue';
 import {TodoList} from "@/types/todoTypes.ts";
-import IssTaskItem from '@/components/ui-kit/IssTaskItem.vue';
+import IssTodoItem from '@/components/ui-kit/IssTodoItem.vue';
 
 defineProps({
   todoList: {
@@ -23,7 +23,7 @@ defineEmits(['checkDeleteItem'])
 
 <template>
   <div class="todo-list_wrapper">
-    <IssTaskItem
+    <IssTodoItem
         v-for="todo in todoList"
         :key="todo.id"
         :todo-item="todo"

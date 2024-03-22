@@ -10,9 +10,9 @@ defineProps({
     type: String,
     default: ''
   },
-  modalValue: {
+  modelValue: {
     type: String,
-    required: true
+    default: ''
   },
   errorMessage: {
     type: String,
@@ -20,7 +20,7 @@ defineProps({
   }
 })
 
-defineEmits(['update:modalValue'])
+defineEmits(['update:modelValue'])
 </script>
 <template>
   <div class="iss-textarea">
@@ -30,8 +30,8 @@ defineEmits(['update:modalValue'])
         cols="30"
         rows="5"
         :id="id"
-        :value="modalValue"
-        @input="$emit('update:modalValue')"
+        :value="modelValue"
+        @input="$emit('update:modelValue', $event.target.value)"
     ></textarea>
     <p v-if="errorMessage.length" class="iss-textarea_error">{{errorMessage}}</p>
   </div>

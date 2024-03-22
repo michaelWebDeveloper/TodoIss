@@ -7,7 +7,7 @@ export default () => {
     const deleteMod = ref(false);
     const deleteList = ref<number[]>([])
 
-    // добавление\удаление идентификатора в списке задач на удаление
+    // Добавление\удаление идентификатора в списке задач на удаление
     const toggleDeleteItem = (id) => {
         const deleteIndex = deleteList.value.indexOf(id);
         if(deleteIndex === -1){

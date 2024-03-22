@@ -5,4 +5,9 @@ export type Todo = {
     isDone: boolean,
 };
 
+export type TodoData = {
+    name: string,
+    description: string
+}
+
 export type TodoList = Array<Todo>;

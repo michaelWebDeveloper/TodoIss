@@ -1,5 +1,6 @@
-<script setup>
-import { defineProps, defineEmits } from "vue";
+<script setup lang="ts">
+import { TodoData } from '@/types/TodoTypes'
+import { defineProps, defineEmits, ref } from "vue";
 
 import IconClose from '@/components/icons/IconClose.vue';
 import IssButton from '@/components/ui-kit/IssButton.vue'
@@ -13,7 +14,25 @@ defineProps({
   }
 })
 
-defineEmits(['closeModal'])
+const emit = defineEmits(['closeModal', 'addTodo'])
+
+const todoData = ref<TodoData>({
+  name: '',
+  description: ''
+})
+
+const closeModal = () => {
+  emit('closeModal')
+  todoData.value = {
+    name: '',
+    description: ''
+  }
+}
+
+const addTodo = () => {
+  emit('addTodo', todoData.value)
+  closeModal()
+}
 </script>
 
 <template>
@@ -27,12 +46,12 @@ defineEmits(['closeModal'])
         <h2 class="todo-title">Добавить задачу</h2>
 
         <form class="todo-form" @submit.prevent>
-          <IssInput id="todo-name" label="Название задачи" />
-          <IssTextarea id="todo-description" label="Описание задачи" />
+          <IssInput v-model="todoData.name" id="todo-name" label="Название задачи" />
+          <IssTextarea v-model="todoData.description" id="todo-description" label="Описание задачи" />
 
           <div class="todo-form_actions">
-            <IssButton @click="$emit('closeModal')" class="ml_10" variant="gray" text="Закрыть" />
-            <IssButton @click="$emit('addTodo')" class="ml_10" text="Добавить" />
+            <IssButton @click="closeModal" class="ml_10" variant="gray" text="Закрыть" />
+            <IssButton @click="addTodo" class="ml_10" text="Добавить" />
           </div>
         </form>
       </div>

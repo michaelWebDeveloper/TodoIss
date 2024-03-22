@@ -1,36 +1,51 @@
 import { ref } from "vue";
 import { defineStore } from 'pinia'
-import type { TodoList } from '@/types/todoTypes'
+import type { TodoList, TodoData } from '@/types/todoTypes'
 
-export const useTodoStore = defineStore('todoStore', () => {
+export default defineStore('todoStore', () => {
 
-    const todoList = ref<TodoList | null>(null)
+    const todoList = ref<TodoList>([])
     const lastTodoId = ref<number>(0)
 
     /**
-     * app loading, getting todos out of localstorage
+     * Инициализация и загрузка списка задач из localStorage
      */
-    const initTodos = () => {}
-
-    /**
-     * adding todoItem to a list
-     */
-    const addTodo = (todoData) => {
-        console.log(todoData)
+    const initTodos = ():void => {
     }
 
     /**
-     * updating values of a todoItem
+     * Добавление задачи
+     */
+    const addTodo = (todoData:TodoData):void => {
+        todoList.value.push({
+            id: lastTodoId.value++,
+            ...todoData,
+            isDone: false,
+        })
+    }
+
+    /**
+     * Изменение задачи
      */
     const updateTodo = (todoId, todoData) => {
         console.log(todoData)
     }
 
     /**
-     * deleting todoItem
+     * Удаление задачи
      */
-    const deleteTodo = (todoId) => {
-        console.log(todoId)
+    const deleteTodos = (todoIds: number[]) => {
+        todoIds.forEach(id => {
+            const todoIndex = todoList.value.findIndex(todo => todo.id === id);
+            todoList.value.splice(todoIndex, 1)
+        })
+    }
+
+    /**
+     * Синхронизация localStorage
+     */
+    const _syncLocalStorage = () => {
+
     }
 
     return {
@@ -38,6 +53,6 @@ export const useTodoStore = defineStore('todoStore', () => {
         initTodos,
         addTodo,
         updateTodo,
-        deleteTodo
+        deleteTodos
     }
 })
