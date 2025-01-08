@@ -8,6 +8,8 @@ const { initTodos } = useTodoStore()
 onMounted(() => {
   initTodos()
 })
+
+
 </script>
 
 <template>
